@@ -12,6 +12,7 @@ public class CreatePlane : MonoBehaviour
     private int[] p_triangles;
     private int nb_vertices;
     private int nb_triangles;
+    private int[,] p_neighbors;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class CreatePlane : MonoBehaviour
 
         p_vertices = new Vector3[nb_vertices];
         p_triangles = new int[nb_triangles * 3];
+        p_neighbors = new int[nb_vertices, 8];
 
         float step = (float)dimension / resolution;
 
@@ -35,6 +37,24 @@ public class CreatePlane : MonoBehaviour
                 float xPos = x * step - dimension / 2f;
                 float zPos = z * step - dimension / 2f;
                 p_vertices[vertexIndex] = new Vector3(xPos, 0, zPos);
+
+                int[] neighbors = new int[8];
+                neighbors[0] = vertexIndex - resolution - 2;
+                neighbors[1] = vertexIndex - resolution - 1;
+                neighbors[2] = vertexIndex - resolution;
+                neighbors[3] = vertexIndex - 1;
+                neighbors[4] = vertexIndex + 1;
+                neighbors[5] = vertexIndex + resolution;
+                neighbors[6] = vertexIndex + resolution + 1;
+                neighbors[7] = vertexIndex + resolution + 2;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    if (neighbors[i] >= 0 && neighbors[i] < nb_vertices)
+                    {
+                        p_neighbors[vertexIndex, i] = neighbors[i];
+                    }
+                }
                 vertexIndex++;
             }
         }
@@ -51,6 +71,10 @@ public class CreatePlane : MonoBehaviour
                 p_triangles[triangleIndex + 1] = vertex;
                 p_triangles[triangleIndex + 2] = vertex + resolution + 2;
 
+                //Debug.DrawLine(p_vertices[vertex + 1], p_vertices[vertex], Color.green, float.MaxValue);
+                //Debug.DrawLine(p_vertices[vertex], p_vertices[vertex + resolution + 2], Color.green, float.MaxValue);
+                //Debug.DrawLine(p_vertices[vertex + resolution + 2], p_vertices[vertex + 1], Color.green, float.MaxValue);
+
                 p_triangles[triangleIndex + 3] = vertex;
                 p_triangles[triangleIndex + 4] = vertex + resolution + 1;
                 p_triangles[triangleIndex + 5] = vertex + resolution + 2;
@@ -62,6 +86,5 @@ public class CreatePlane : MonoBehaviour
 
         p_mesh.RecalculateBounds();
         p_mesh.RecalculateNormals();
-
     }
 }
