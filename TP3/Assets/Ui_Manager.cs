@@ -12,8 +12,13 @@ public class Ui_Manager : MonoBehaviour
     public Text Resolution;
     public Text Dimension;
     
+    
+    public Button btn;
+    public float rotationSpeed = 100f; // vitesse de rotation
+
     void Start()
     {
+        btn.onClick.AddListener(Rotate);
         UpdateText();
     }
 
@@ -23,5 +28,10 @@ public class Ui_Manager : MonoBehaviour
         //Dimension.text = createplane.dimension;
         Dimension.text += (createplane.dimension).ToString();
         Resolution.text += (createplane.resolution).ToString();
+    }
+
+    private void Rotate()
+    {
+        //createplane.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
     }
 }

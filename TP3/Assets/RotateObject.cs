@@ -1,40 +1,57 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class RotateObject : MonoBehaviour
 {
+
+    [SerializeField] int time;
+
     private Vector3 mOffset;
     private float mZCoord;
     public float rotationSpeed = 100f; // vitesse de rotation
 
+    public Button btn;
+    private float timePressed = 0f;
+    private float holdTime = 1f;
+    private bool isPressed = false;
+
+    private void Start()
+    {
+        btn.onClick.AddListener(StartCoroutine);
+    }
+
     private void Update()
     {
         //Rotation vers la droite (sens anti-horaire)
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.R))
         {
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
         //Rotation vers la gauche (sens horaire)
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.T))
         {
             transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
         }
     }
 
-    private void OnMouseDown()
-    {
-        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        mOffset = gameObject.transform.position - GetMouseWorldPos();
-    }
 
-    private void OnMouseDrag()
-    {
-        transform.rotation = Quaternion.Euler(0, -GetMouseWorldPos().x * 2, 0);
-    }
+        void StartCoroutine()
+        {
+            StartCoroutine(MaCoroutine());
+        }
 
-    private Vector3 GetMouseWorldPos()
-    {
-        Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = mZCoord;
-        return Camera.main.ScreenToWorldPoint(mousePoint) + mOffset;
-    }
+        private IEnumerator MaCoroutine()
+        {
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        //Fera une rotation quand on appelera la fonction
+        void Rotate()
+        {
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime * 10);
+        }
+    
+
 }

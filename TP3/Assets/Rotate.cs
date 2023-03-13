@@ -11,13 +11,13 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("a"))
+        if (Input.GetKey("q"))
         {
             transform.LookAt(target);
             //transform.Translate(Vector3.right * Time.deltaTime);
             transform.Translate(Vector3.right * SpeedRotate);
         }
-        if (Input.GetKey("e"))
+        if (Input.GetKey("d"))
         {
             transform.LookAt(target);
             transform.Translate(Vector3.left * (SpeedRotate));
