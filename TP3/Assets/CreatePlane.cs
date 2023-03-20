@@ -70,11 +70,6 @@ public class CreatePlane : MonoBehaviour
                 p_triangles[triangleIndex] = vertex + 1;
                 p_triangles[triangleIndex + 1] = vertex;
                 p_triangles[triangleIndex + 2] = vertex + resolution + 2;
-
-                //Debug.DrawLine(p_vertices[vertex + 1], p_vertices[vertex], Color.green, float.MaxValue);
-                //Debug.DrawLine(p_vertices[vertex], p_vertices[vertex + resolution + 2], Color.green, float.MaxValue);
-                //Debug.DrawLine(p_vertices[vertex + resolution + 2], p_vertices[vertex + 1], Color.green, float.MaxValue);
-
                 p_triangles[triangleIndex + 3] = vertex;
                 p_triangles[triangleIndex + 4] = vertex + resolution + 1;
                 p_triangles[triangleIndex + 5] = vertex + resolution + 2;
@@ -86,5 +81,15 @@ public class CreatePlane : MonoBehaviour
 
         p_mesh.RecalculateBounds();
         p_mesh.RecalculateNormals();
+    }
+
+    public int GetNbVertices()
+    {
+        return nb_vertices;
+    }
+
+    public int GetNbTriangles()
+    {
+        return nb_triangles;
     }
 }
