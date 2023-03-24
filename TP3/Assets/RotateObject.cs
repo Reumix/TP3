@@ -11,15 +11,12 @@ public class RotateObject : MonoBehaviour
     private float mZCoord;
     public float rotationSpeed = 100f; // vitesse de rotation
 
-    public Button btn;
+    //public Button btn;
     private float timePressed = 0f;
     private float holdTime = 1f;
     private bool isPressed = false;
 
-    private void Start()
-    {
-        btn.onClick.AddListener(StartCoroutine);
-    }
+    
 
     private void Update()
     {
