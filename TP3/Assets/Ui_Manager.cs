@@ -2,35 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading.Tasks;
 
 public class Ui_Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    public CreatePlane createplane;
-
     public Text Resolution;
     public Text Dimension;
     public Text Triangles;
     public Text Vertices;
+    public Text ZoomSpeed;
 
-    void Start()
+    public void SetPlaneValues(int dimension, int resolution, int triangles, int vertices)
     {
-        UpdateText();
+        Dimension.text = dimension.ToString();
+        Resolution.text = resolution.ToString();
+        Triangles.text = triangles.ToString();
+        Vertices.text = vertices.ToString();
     }
 
-    private void UpdateText()
+    public void SetZoomSpeedValues(int zoomSpeed)
     {
-        Dimension.text = (createplane.dimension).ToString();
-        Resolution.text = (createplane.resolution).ToString();
-        GetValues();
-    }
-
-    async private void GetValues()
-    {
-        await Task.Delay(500);
-        Triangles.text = (createplane.GetNbTriangles()).ToString();
-        Vertices.text = (createplane.GetNbVertices()).ToString();
+        ZoomSpeed.text = zoomSpeed.ToString();
     }
 }

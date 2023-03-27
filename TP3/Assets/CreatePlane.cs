@@ -13,6 +13,7 @@ public class CreatePlane : MonoBehaviour
     private int nb_vertices;
     private int nb_triangles;
     private int[,] p_neighbors;
+    public Ui_Manager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +82,8 @@ public class CreatePlane : MonoBehaviour
 
         p_mesh.RecalculateBounds();
         p_mesh.RecalculateNormals();
+
+        manager.SetPlaneValues(dimension, resolution, nb_triangles, nb_vertices);
     }
 
     public int GetNbVertices()
