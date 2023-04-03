@@ -1560,8 +1560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f582aecf61c434fbcbaf0df8d53d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimension: 4
-  resolution: 2
+  dimension: 20
+  resolution: 8
   manager: {fileID: 946076719}
 --- !u!23 &1540968873
 MeshRenderer:
@@ -1669,8 +1669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f8d9ced60aa3845b0b5382f4cfb8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
-  deformationStrength: 5
+  radius: 2
+  deformationStrength: 2.5
 --- !u!1 &1574229070
 GameObject:
   m_ObjectHideFlags: 0
