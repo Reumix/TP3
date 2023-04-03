@@ -16,11 +16,6 @@ public class RotateObject : MonoBehaviour
     private float holdTime = 1f;
     private bool isPressed = false;
 
-    private void Start()
-    {
-        btn.onClick.AddListener(StartCoroutine);
-    }
-
     private void Update()
     {
         //Rotation vers la droite (sens anti-horaire)
@@ -35,7 +30,6 @@ public class RotateObject : MonoBehaviour
         }
     }
 
-
     void StartCoroutine()
     {
         StartCoroutine(MaCoroutine());
@@ -46,12 +40,4 @@ public class RotateObject : MonoBehaviour
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         yield return null;
     }
-
-    //Fera une rotation quand on appelera la fonction
-    void Rotate()
-    {
-        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime * 10);
-    }
-
-
 }
