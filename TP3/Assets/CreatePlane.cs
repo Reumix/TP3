@@ -23,6 +23,7 @@ public class CreatePlane : MonoBehaviour
 
         p_mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = p_mesh;
+        
 
         p_vertices = new Vector3[nb_vertices];
         p_triangles = new int[nb_triangles * 3];
@@ -75,15 +76,26 @@ public class CreatePlane : MonoBehaviour
                 p_triangles[triangleIndex + 4] = vertex + resolution + 1;
                 p_triangles[triangleIndex + 5] = vertex + resolution + 2;
 
+                Debug.LogError(p_triangles[triangleIndex] + " " + p_triangles[triangleIndex + 1] + " " + p_triangles[triangleIndex + 2] + " " + p_triangles[triangleIndex + 3] + " " + p_triangles[triangleIndex + 4] + " " + p_triangles[triangleIndex + 5]);
+
                 triangleIndex += 6;
             }
         }
         p_mesh.triangles = p_triangles;
 
+        int[] triangles_mesh = p_mesh.GetTriangles(0);
+
+        for (int i = 0; i < triangles_mesh.Length; i++)
+        {
+            Debug.Log(triangles_mesh[i]);
+        }
+
         p_mesh.RecalculateBounds();
         p_mesh.RecalculateNormals();
 
         manager.SetPlaneValues(dimension, resolution, nb_triangles, nb_vertices);
+
+        GetComponent<MeshCollider>().sharedMesh = p_mesh;
     }
 
     public int GetNbVertices()

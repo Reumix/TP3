@@ -355,6 +355,8 @@
 "Assets/CameraController.cs"
 "Assets/CameraRayCast.cs"
 "Assets/CreatePlane.cs"
+"Assets/GenerateTerrain.cs"
+"Assets/MeshDeformation.cs"
 "Assets/RotateObject.cs"
 "Assets/Ui_Manager.cs"
 -langversion:9.0
