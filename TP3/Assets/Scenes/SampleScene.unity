@@ -816,7 +816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4cde108cd1e6f47874b3f255e86c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createplane: {fileID: 1540968872}
   Resolution: {fileID: 1033467411}
   Dimension: {fileID: 1514282262}
   Triangles: {fileID: 960680624}
@@ -1010,7 +1009,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca8b9ca088a794a489bf73ca888326e2, type: 3}
   m_Name: 
@@ -1546,8 +1545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f582aecf61c434fbcbaf0df8d53d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimension: 100
-  resolution: 50
+  dimension: 4
+  resolution: 2
   manager: {fileID: 946076719}
 --- !u!23 &1540968873
 MeshRenderer:
@@ -1622,10 +1621,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540968871}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!114 &1540968877

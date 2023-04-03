@@ -15,15 +15,22 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // Verrouille le curseur de la souris au centre de l'écran
+        //Cursor.lockState = CursorLockMode.Locked; // Verrouille le curseur de la souris au centre de l'écran
         zoomSpeed = 4;
         manager.SetZoomSpeedValues(zoomSpeed);
     }
 
     void Update()
     {
-        currentX += Input.GetAxis("Mouse X") * sensitivity;
-        currentY -= Input.GetAxis("Mouse Y") * sensitivity;
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            currentX += Input.GetAxis("Mouse X") * sensitivity;
+            currentY -= Input.GetAxis("Mouse Y") * sensitivity;
+
+
+            currentY = Mathf.Clamp(currentY, -90f, 90f); // Limitation de l'angle de rotation de la caméra
+
+        }
 
         if (Input.GetKeyDown("c") && zoomSpeed > 1)
         {
@@ -36,9 +43,6 @@ public class CameraController : MonoBehaviour
             zoomSpeed += 1;
             manager.SetZoomSpeedValues(zoomSpeed);
         }
-
-        currentY = Mathf.Clamp(currentY, -90f, 90f); // Limitation de l'angle de rotation de la caméra
-
         float zoom = Input.GetAxis("Mouse ScrollWheel"); // Zoom avec la molette de la souris
         distance -= zoom * 4 * zoomSpeed;
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
